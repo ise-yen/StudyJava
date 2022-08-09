@@ -1,8 +1,8 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-
-public class Main_2164 {
+// 카드2
+public class Main_2164_카드2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
