@@ -3,7 +3,7 @@ package swea;
 import java.util.Scanner;
 
 // 원재의 메모리 복구하기
-public class Solution_1289 {
+public class Solution_1289_메모리복구 {
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
