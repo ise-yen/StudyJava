@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 //상호의 배틀필드
-public class Solution_1873_황예은 {
+public class Solution_1873_배틀필드 {
 	static int T;
 	static char[][] map;
 	// 방향 전환용 델타 : 위, 아래, 왼쪽, 오른
