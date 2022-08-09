@@ -1,6 +1,6 @@
 
 import java.util.Scanner;
-public class Solution_2001_황예은 {
+public class Solution_2001_파리퇴치 {
 	public static void main(String args[]) throws Exception
 	{
 		Scanner sc = new Scanner(System.in);
