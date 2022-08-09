@@ -28,6 +28,7 @@ public class Main_2563_색종이_브1 {
 
 		System.out.println(res);
 
+		sc.close();
 	}
 
 }

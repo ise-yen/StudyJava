@@ -32,5 +32,7 @@ public class Main_2960_에라토스테네스의체 {
 				}
 			}
 		}
+
+		sc.close();
 	}
 }

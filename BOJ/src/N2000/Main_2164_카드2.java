@@ -25,6 +25,8 @@ public class Main_2164_카드2 {
 		}
 		// 남은 한 장 출력
 		System.out.println(q.peek());
+
+		sc.close();
 	}
 
 }

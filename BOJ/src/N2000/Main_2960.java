@@ -32,5 +32,7 @@ public class Main_2960 {
 				}
 			}
 		}
+
+		sc.close();
 	}
 }
