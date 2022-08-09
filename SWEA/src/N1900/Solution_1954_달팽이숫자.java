@@ -1,4 +1,4 @@
-package src.N1900;
+package N1900;
 
 // 달팽이 숫자
 import java.util.Scanner;

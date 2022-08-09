@@ -1,4 +1,4 @@
-package src.N2000;
+package N2000;
 
 import java.util.Scanner;
 public class Solution_2001_파리퇴치 {

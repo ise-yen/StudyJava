@@ -1,4 +1,4 @@
-package src.N1200;
+package N1200;
 
 import java.util.Scanner;
 
