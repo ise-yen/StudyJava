@@ -1,6 +1,6 @@
 import java.util.Scanner;
-
-public class Main_2023_황예은 {
+// 신기한소수
+public class Main_2023_신기한소수 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
