@@ -1,6 +1,4 @@
 package N1200;
-
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -39,6 +37,8 @@ public class Solution_1220_Magnetic {
 			}
 			System.out.println("#" + t + " " + res);
 		}
+
+		sc.close();
 	}
 
 }

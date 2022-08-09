@@ -40,5 +40,7 @@ public class Solution_2001_파리퇴치 {
             res = max;
             System.out.println("#" + test_case + " " + res);
         }
+
+		sc.close();
 	}
 }
