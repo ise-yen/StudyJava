@@ -3,7 +3,7 @@ package swea;
 // 달팽이 숫자
 import java.util.Scanner;
 
-public class Solution_1954 {
+public class Solution_1954_달팽이숫자 {
 
 	public static void main(String[] args) throws Exception {
 		@SuppressWarnings("resource")
