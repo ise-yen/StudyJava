@@ -5,7 +5,7 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 //구간 합 구하기 4
-public class Main_11659 {
+public class Main_11659_구간합4 {
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
