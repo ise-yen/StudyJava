@@ -1,5 +1,5 @@
 // 브5) 새싹
-public class Main_25083 {
+public class Main_25083_새싹 {
 	public static void main(String[] args) {
 		System.out.println(
 				"         ,r'\"7\n" + 
