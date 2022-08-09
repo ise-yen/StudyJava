@@ -39,7 +39,7 @@ public class Main_2023_신기한소수 {
 				}
 			}
 		}
-
+		sc.close();
 	}
 
 	// 소수인지 판별

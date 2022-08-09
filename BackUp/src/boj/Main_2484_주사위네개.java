@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 // 브2) 주사위 네개
-public class Main_2484 {
+public class Main_2484_주사위네개 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -16,6 +16,7 @@ public class Main_2484 {
 			dices[p][sc.nextInt() - 1]++;
 		}
 
+		sc.close();
 
 //		for (int p = 0; p < awardArr.length; p++) {
 //			int i = 5;

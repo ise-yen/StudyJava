@@ -8,7 +8,7 @@ public class Main_12891 {
 		Scanner sc = new Scanner(System.in);
 
 		int s = sc.nextInt();
-		int p = sc.nextInt();
+//		int p = sc.nextInt();
 		String str = sc.next();
 		int[] minACGT = new int[4]; // ACGT 최소 개수
 		for (int i = 0; i < minACGT.length; i++) {
@@ -51,13 +51,15 @@ public class Main_12891 {
 		}
 		else
 			System.out.println(0);
+		
+		sc.close();
 	}
 	
-	private static void pswd(int cnt) {
-		for(int i = 1; i<=6; i++) {
-			numbers[cnt] = i;
-			pswd(cnt+1);
-		}
-	}
+//	private static void pswd(int cnt) {
+//		for(int i = 1; i<=6; i++) {
+////			numbers[cnt] = i;
+//			pswd(cnt+1);
+//		}
+//	}
 
 }
