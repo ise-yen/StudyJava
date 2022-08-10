@@ -18,6 +18,7 @@ public class Main_1009_분산처리 {
 			System.out.println(data);
 		}
 
+		sc.close();
 	}
-
+	
 }

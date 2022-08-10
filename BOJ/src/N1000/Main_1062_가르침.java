@@ -56,6 +56,6 @@ public class Main_1062_가르침 {
 		}
 
 		System.out.println(res);
+		sc.close();
 	}
-
 }
