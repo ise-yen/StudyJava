@@ -25,7 +25,7 @@ public class Main_16926_배열돌리기1 {
 				else
 					arr[i][j] = arr[i][j + 1];
 			}
-			// 좌
+			// 우
 			for (int i = k; i < n; i++) {
 				int j = m - 1;
 				if (i != n - 1)
@@ -39,24 +39,13 @@ public class Main_16926_배열돌리기1 {
 				else
 					arr[i][j] = arr[i][j - 1];
 			}
-			// 우
+			// 좌
 			for (int i = n - 1; i >= k; i--) {
 				int j = k;
 				if(i != k)
 					arr[i][j] = arr[i - 1][j];
 			}
 			arr[k + 1][k] = tmp;
-
-			// 디버깅
-//			System.out.println("k : " + k);
-//			for (int i = k; i < n; i++) {
-//				for (int j = k; j < m; j++) {
-//					System.out.print(arr[i][j] + " ");
-//				}
-//				System.out.println();
-//			}
-//
-//			System.out.println();
 		}
 	}
 
