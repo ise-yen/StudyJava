@@ -14,8 +14,10 @@ public class Main_11286_절댓값힙 {
 
 		@Override
 		public int compareTo(MinHeap o) {
-			if(Math.abs(this.value) < Math.abs(o.value)) return -1;
-			else if(Math.abs(this.value) > Math.abs(o.value)) return 1;
+			if (Math.abs(this.value) < Math.abs(o.value))
+				return -1;
+			else if (Math.abs(this.value) > Math.abs(o.value))
+				return 1;
 			// 값이 같으면 더 작은 값이 앞으로
 			else {
 				return this.value <= o.value ? -1 : 1;
@@ -36,17 +38,21 @@ public class Main_11286_절댓값힙 {
 
 		for (int i = 0; i < N; i++) {
 			int x = sc.nextInt();
+			// 1. 0이 아니면 입력
 			if (x != 0) {
 				pq.offer(new MinHeap(x));
-			} else {
-				// 절대값이 가장 작은 값을 출력
-				// 1. 비었을 때 : 0 출력
-				if(pq.size() == 0) System.out.println(0);
-				else {
+			}
+			// 2. 0이면 출력
+			else {
+				// 2-1. 비었을 때 : 0 출력
+				if (pq.size() == 0)
+					System.out.println(0);
+				// 2-2. 절대값이 가장 작은 값을 출력
+				else
 					System.out.println(pq.poll());
-				}
-			} 
+			}
 		}
+		sc.close();
 	}
 
 }
