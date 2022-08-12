@@ -31,6 +31,7 @@ public class Main_2961_도영이맛난음식 {
 		}
 		System.out.println(min);
 
+		sc.close();
 	}
 
 	static void combination(boolean[] visited, int start, int n, int r) {
