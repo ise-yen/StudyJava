@@ -11,6 +11,7 @@ public class Main_1828_냉장고 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
+		// 입력
 		int N = sc.nextInt();
 		int[][] temper = new int[N][2];
 		for (int i = 0; i < N; i++) {
@@ -31,6 +32,7 @@ public class Main_1828_냉장고 {
 			}
 		});
 
+		// 정렬 잘되는지 확인
 //		for (int i = 0; i < temper.length; i++) {
 //			for (int j = 0; j < 2; j++) {
 //				System.out.print(temper[i][j] + " ");
@@ -38,20 +40,19 @@ public class Main_1828_냉장고 {
 //			System.out.println();
 //		}
 
-		int cnt = 1;
+		int cnt = 1; // 냉장고 개수
 		// i번째 인덱스의 최고온도가 다른 애들 범위 내에 있는지 체크
 		for (int i = 0; i < N; i++) {
 			for (int j = i + 1; j < N; j++) {
 				if (temper[i][1] >= temper[j][0] && temper[i][1] <= temper[j][1]) {
-					
-				}
-				else {
+
+				} else {
 					cnt++;
 					break;
 				}
 			}
 		} // end of check range
-		
+
 		System.out.println(cnt);
 
 	} // end of main
