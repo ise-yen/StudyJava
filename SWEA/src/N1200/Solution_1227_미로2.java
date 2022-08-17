@@ -70,7 +70,7 @@ public class Solution_1227_미로2 {
 						visited[pi + di[k]][pj + di[k]] = true;
 					}
 					if(cnt == 4) {
-						pi = startI
+						pi = startI;
 					}
 				}
 			}

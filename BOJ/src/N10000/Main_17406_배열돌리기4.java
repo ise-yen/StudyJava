@@ -83,9 +83,10 @@ public class Main_17406_배열돌리기4 {
 	static void TurnCal() {
 		// 돌리기
 		for (int k = 0; k < K; k++) {
-			int r = turns[][0];
-			int c = turns[][1];
-			int s = turns[][2];
+			int r = turns[0][0];
+			// 수정 필요
+			int c = turns[0][1];
+			int s = turns[0][2];
 			max = s - 1;
 			while (max >= 0) {
 				Turn(r - s - 1 + max, c - s - 1 + max, r + s - 1 - max, c + s - 1 - max);
