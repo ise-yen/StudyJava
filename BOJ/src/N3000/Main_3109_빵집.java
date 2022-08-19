@@ -20,30 +20,38 @@ public class Main_3109_빵집 {
 		gasMap = new char[R][C + 2];
 		for (int r = 0; r < gasMap.length; r++) {
 			String str = br.readLine();
-			for (int c = 1; c < gasMap[r].length - 1; c++) {
-				gasMap[r][c] = str.charAt(c);
+			int s = 0;
+			for (int c = 0; c < gasMap[r].length; c++) {
+				if (c == 0)
+					gasMap[r][c] = 'A';
+				else if (c == gasMap[r].length - 1)
+					gasMap[r][c] = 'B';
+				else {
+					gasMap[r][c] = str.charAt(s);
+					s++;
+				}
 			}
 		}
 
 		// [DEBUG] 입력 잘 됐는지 체크
-//		for (int r = 0; r < gasMap.length; r++) {
-//			for (int c = 1; c < gasMap[r].length-1; c++) {
-//				System.out.print(gasMap[r][c] + " ");
-//			}
-//			System.out.println();
-//		}
-
-		for (int c = 1; c < gasMap[0].length - 1; c++) {
-			for (int r = 0; r < gasMap.length; r++) {
-				if (gasMap[r][c] == '.') {
-					if (r - 1 >= 0 && r + 1 <= gasMap.length) {
-						// 우, 우상단, 우하단 중에 .이 있는지 찾기
-						if (gasMap[r][c + 1] == '.' || gasMap[r - 1][c + 1] == '.' || gasMap[r + 1][c + 1] == '.') {
-
-						}
-					}
-				}
+		for (int r = 0; r < gasMap.length; r++) {
+			for (int c = 0; c < gasMap[r].length; c++) {
+				System.out.print(gasMap[r][c] + " ");
 			}
+			System.out.println();
 		}
+
+//		for (int c = 1; c < gasMap[0].length - 1; c++) {
+//			for (int r = 0; r < gasMap.length; r++) {
+//				if (gasMap[r][c] == '.') {
+//					if (r - 1 >= 0 && r + 1 <= gasMap.length) {
+//						// 우, 우상단, 우하단 중에 .이 있는지 찾기
+//						if (gasMap[r][c + 1] == '.' || gasMap[r - 1][c + 1] == '.' || gasMap[r + 1][c + 1] == '.') {
+//
+//						}
+//					}
+//				}
+//			}
+//		}
 	}
 }

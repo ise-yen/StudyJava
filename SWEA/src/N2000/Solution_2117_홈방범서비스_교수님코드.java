@@ -65,7 +65,7 @@ public class Solution_2117_홈방범서비스_교수님코드 {
 				}
 			}
 
-			sb.append("#").append(tc).append(" ").append(res).append("\n");
+			sb.append("#" + tc + " " + res + "\n");
 		}
 		System.out.print(sb.toString());
 	}
