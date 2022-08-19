@@ -1,18 +1,22 @@
 package N10000;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main_16952_AtoB {
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		int res = 1;
-		int A = sc.nextInt();
-		int B = sc.nextInt();
+		int A = Integer.parseInt(st.nextToken());
+		int B = Integer.parseInt(st.nextToken());
 
 		int a = A;
 		int b = B;
-
 		while (b > A) {
 			// 1-1. 2의 배수 o
 			if (b % 2 == 0) {
@@ -22,8 +26,12 @@ public class Main_16952_AtoB {
 			else {
 				// 2-1. 끝 자리가 1일 때
 				if (b % 10 == 1) {
-					b -= 1;
 					b /= 10;
+				}
+				//(ex. 7)
+				//B = 142   /  71 /  7  //  a ==??
+				else { 
+					break;
 				}
 			}
 			res++;
