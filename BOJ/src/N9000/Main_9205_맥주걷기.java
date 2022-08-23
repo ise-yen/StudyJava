@@ -60,25 +60,49 @@ public class Main_9205_맥주걷기 {
 						fesI = i;
 				}
 
-				// 3-3. 현재위치~편의점까지 거리 중 50m 될 때마다 한 잔 드링킹
 				int sad = 0;
 				boolean isSad = false;
-				for (int i = 0; i < map.length - 1; i++) {
-					for (int j = i + 1; j < map.length; j++) {
-						int dis = Distance(map[i][0], map[i][1], map[j][0], map[j][0]);
-						if (dis > beers * term) {
-							sad++;
-						} else {
+
+				// 집에서 페스티벌 방향으로 걷기
+				if (homeI <= fesI) {
+					// 3-3. 현재위치~편의점까지 거리 중 50m 될 때마다 한 잔 드링킹
+					for (int i = homeI; i < fesI; i++) {
+						for (int j = i + 1; j <= fesI; j++) {
+							int dis = Distance(map[i][0], map[i][1], map[j][0], map[j][0]);
+							if (dis > beers * term) {
+								sad++;
+							} else {
+								break;
+							}
+						}
+						if (sad == map[i].length - i) {
+							System.out.println("sad");
+							sad = 0;
+							isSad = true;
 							break;
 						}
 					}
-					if (sad == map[i].length - i) {
-						System.out.println("sad");
-						sad = 0;
-						isSad = true;
-						break;
+				} else {
+					// 3-3. 현재위치~편의점까지 거리 중 50m 될 때마다 한 잔 드링킹
+					for (int i = 0; i < map.length - 1; i++) {
+						for (int j = i + 1; j < map.length; j++) {
+							int dis = Distance(map[i][0], map[i][1], map[j][0], map[j][0]);
+							if (dis > beers * term) {
+								sad++;
+							} else {
+								break;
+							}
+						}
+						if (sad == map[i].length - i) {
+							System.out.println("sad");
+							sad = 0;
+							isSad = true;
+							break;
+						}
 					}
+
 				}
+
 				if (isSad)
 					continue;
 				else {
