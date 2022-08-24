@@ -75,16 +75,6 @@ public class Main_3055_탈출 {
 
 	}
 
-	static void Print() {
-		// [Debug] 출력
-		for (int i = 0; i < map.length; i++) {
-			for (int j = 0; j < map[i].length; j++) {
-				System.out.print(map[i][j]);
-			}
-			System.out.println();
-		} // =====> end of Debug
-	}
-
 	static void waterMove() {
 		if (emptyCnt == sumWaterCnt) {
 			System.out.println("KAKTUS");
@@ -155,6 +145,16 @@ public class Main_3055_탈출 {
 			if (isFinish)
 				return;
 		}
+	}
+
+	static void Print() {
+		// [Debug] 출력
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map[i].length; j++) {
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		} // =====> end of Debug
 	}
 
 }
