@@ -1,4 +1,4 @@
-package N2000;
+package SWtest;
 
 /**
  * 완탐, 시뮬레이션

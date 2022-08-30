@@ -1,4 +1,4 @@
-package N5000;
+package SWtest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
