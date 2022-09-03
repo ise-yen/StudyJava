@@ -74,12 +74,7 @@ public class Solution_1767_프로세서연결하기 {
 	static void perm(int cnt) {
 		if (cnt == posCore.size()) {
 			// 순열 완료
-			/*
-			 * 돌면서 core를 만나면 상-하-좌-우 순서로 연결해보기 - 연결된 core 개수 세기 전선을 '2'로 표시 가는길에 '2'가 보이면 다른
-			 * 방향으로 연결하기
-			 * 
-			 * 개수가 가장 많을 때의 길이 출력 -개수가 같으면 가장 짧은 길이로 출력
-			 */
+
 			System.out.println(Arrays.toString(orderIndex));
 			for (int i = 0; i < orderIndex.length; i++) {
 				Connect(posCore.get(orderIndex[i]).r, posCore.get(orderIndex[i]).c, 0, 0);
@@ -97,15 +92,26 @@ public class Solution_1767_프로세서연결하기 {
 		}
 	}
 
-	// r,c : core 좌표, cnt : 현재까지 연결한 core 개수
-	static void Connect(int r, int c, int cnt, int length) {
+	
+	/*
+	 * 돌면서 core를 만나면 상-하-좌-우 순서로 연결해보기
+	 * - 연결된 core 개수 세기
+	 * - 전선을 '2'로 표시 : 가는길에 '2'가 보이면 다른 방향으로 연결하기
+	 * 
+	 * 개수가 가장 많을 때의 길이 출력 -개수가 같으면 가장 짧은 길이로 출력
+	 */
+	static void Connect(int r, int c, int cnt, int length) { // r,c : core 좌표, cnt : 현재까지 연결한 core 개수
 		if (cnt == posCore.size()) {
 			res = length;
 			return;
 		}
 		for (int d = 0; d < deltas.length; d++) {
-			int nr = r += deltas[d][0];
-			int nc = c += deltas[d][1];
+			for(int index = 1; index <= map.length; index++) {
+				int nr = r + deltas[d][0] * index;
+				int nc = c + deltas[d][1] * index;
+				
+					
+			}
 		}
 	}
 }
