@@ -29,19 +29,21 @@ public class Solution_4008_숫자만들기 {
 			max = Integer.MIN_VALUE;
 			min = Integer.MAX_VALUE;
 
+			// 0. 입력
 			N = Integer.parseInt(br.readLine());
 			opersN = new int[4];
 			nums = new int[N];
-			isSelected = new boolean[4];
-			int cntOpers = 0;
+			isSelected = new boolean[N-1];
+			int cntOpers = 0; // 연산자의 총 개수
 			StringTokenizer st = new StringTokenizer(br.readLine());
-			// 연산자들의 개수 입력
+
+			// 0-1. 연산자들의 개수 입력
 			for (int i = 0; i < opersN.length; i++) {
 				opersN[i] = Integer.parseInt(st.nextToken());
 				cntOpers += opersN[i];
 			}
 
-			// 수식 순서대로 하나씩 배열에 할당
+			// 0-2. 수식 순서대로 하나씩 배열에 할당
 			opers = new char[cntOpers];
 			int index = 0;
 			for (int i = 0; i < opersN.length; i++) {
@@ -65,35 +67,37 @@ public class Solution_4008_숫자만들기 {
 				}
 			}
 
-			// [DEBUG]
-			for (int i = 0; i < opers.length; i++) {
-				System.out.print(opers[i] + " ");
-			}
+//			// [DEBUG]
+//			for (int i = 0; i < opers.length; i++) {
+//				System.out.print(opers[i] + " ");
+//			}
 //			if (cntOpers == index) {
 //				System.out.println("[DEBUG] 수식 : 문자형으로 할당 완료");
 //			}
 
 			st = new StringTokenizer(br.readLine());
-			// 수식의 사용될 숫자들 입력
+			// 0-3. 수식의 사용될 숫자들 입력
 			for (int i = 0; i < nums.length; i++) {
 				nums[i] = Integer.parseInt(st.nextToken());
 			}
 			// ----- 입력 끝
 
+//			// [DEBUG]
+//			System.out.print(nums[0]);
+			dfs(0, nums[0], 1);
 
-			System.out.print(nums[0]);
-			dfs(0, nums[0]);
-			
 			// 결과 출력
-			System.out.println(max + " - " + min);
+//			System.out.println(max + " - " + min);
 			res = max - min;
 			System.out.println("#" + t + " " + res);
 		} // ----- 테스트케이스 끝
 	}
 
-	static void dfs(int cnt, int cal) {
+	static void dfs(int cnt, int cal, int index) {
+		int tmp = cal;
 		if (cnt == opers.length) {
-			System.out.println(" = " + cal);
+			// [DEBUG]
+//			System.out.println(" = " + cal);
 			if (max < cal)
 				max = cal;
 			if (min > cal)
@@ -104,29 +108,26 @@ public class Solution_4008_숫자만들기 {
 			if (isSelected[i])
 				continue;
 
+//			System.out.print(" " + opers[i] + " ");
 			switch (opers[i]) {
 			case '+':
-				System.out.print(" + ");
-				cal += nums[i + 1];
+				cal += nums[index];
 				break;
 			case '-':
-				System.out.print(" - ");
-				cal -= nums[i + 1];
+				cal -= nums[index];
 				break;
 			case '*':
-				System.out.print(" * ");
-				cal *= nums[i + 1];
+				cal *= nums[index];
 				break;
 			case '/':
-				System.out.print(" / ");
-				cal /= nums[i + 1];
+				cal /= nums[index];
 				break;
 			}
-			System.out.print(nums[i + 1]);
+//			System.out.print(nums[index]);
 			isSelected[i] = true;
-			dfs(cnt + 1, cal);
+			dfs(cnt + 1, cal, index + 1);
 			isSelected[i] = false;
-
+			cal = tmp;
 		}
 	}
 
