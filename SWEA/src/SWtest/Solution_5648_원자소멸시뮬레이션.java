@@ -3,6 +3,7 @@ package SWtest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -11,8 +12,7 @@ public class Solution_5648_원자소멸시뮬레이션 {
 
 	// x = j(열), y = i(행)
 	static int N; // 원자 수
-	static int[][] map;
-	static BombAtom[] allK;
+	static int[][] map; // 원자들 위치
 	static Atom[] allAtom;
 
 	static class Atom {
@@ -30,97 +30,107 @@ public class Solution_5648_원자소멸시뮬레이션 {
 		}
 	}
 
-	static class BombAtom {
-		int sumK;
-		int cntAtom;
-
-		BombAtom(int sumK, int cntAtom) {
-			this.sumK = sumK;
-			this.cntAtom = cntAtom;
-		}
-	}
-
-	static int[][] deltas = { { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 0 } };
+	static int[][] deltas = { { 0, -1 }, { 0, 1 }, { -1, 0 }, { 1, 0 } };
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
 
-		for (int t = 1; t <= T; t++) {
+		for (int t = 1; t <= T; t++) { // test case start
+			
 			int res = 0; // 정답 = 방출하는 에너지
+			
 			int N = Integer.parseInt(br.readLine()); // 원자 수
 			allAtom = new Atom[N + 1]; // 1~N개 + 0번째
 
 			StringTokenizer st = null;
-			map = new int[2001][2001];
-			allK = new BombAtom[N + 1];
+			map = new int[4001][4001];
 			int maxRange = Integer.MIN_VALUE;
 			// 입력
 			for (int n = 1; n <= N; n++) {
 				st = new StringTokenizer(br.readLine());
-				int x = Integer.parseInt(st.nextToken()); // 가로
-				int y = Integer.parseInt(st.nextToken()); // 세로
+				int x = Integer.parseInt(st.nextToken()) + 1000; // 가로 j
+				int y = Integer.parseInt(st.nextToken()) + 1000; // 세로 i
 				int dir = Integer.parseInt(st.nextToken()); // 이동 방향
 				int k = Integer.parseInt(st.nextToken()); // 에너지
 
-				// 원자 만들어서 allAtom(의 index = 각자의 번호)에 넣어주기
+				// 원자 만들어서 allAtom에 넣어주기
+				// : 1부터 입력(index 1 = A원자, index 2 = B원자, ..)
 				Atom atom = new Atom(n, x, y, dir, k);
 				allAtom[n] = atom;
-				
+
 				// 맵에 원자가 존재한다고 표시해주기
 				map[y][x] = n;
 
 				// 반복문 돌릴 때 원자가 이동할 리 없는 범위는 최대한 컷
-				int max = Integer.max(Math.abs(x), Math.abs(y));
-				maxRange = Integer.max(max, maxRange);
+				int maxDis = 0; // atom이 이동할 수 있는 최대 거리
+				switch (dir) {
+				case 0: // 상
+					maxDis = map.length - y;
+					break;
+				case 1: // 하
+					maxDis = y;
+					break;
+				case 2: // 좌
+					maxDis = x;
+					break;
+				case 3: // 우
+					maxDis = map.length - x;
+					break;
+				}
+				maxRange = Integer.max(maxDis, maxRange);
 
 			} // end of input
 
-			// 가장 멀리있는애 기준으로 반복
-			while (maxRange >= -1000) {
+			// 가장 많이 이동해야하는 원자 기준으로 반복
+			while (maxRange >= 0) {
 				maxRange--;
-				for (int i = 1; i < allAtom.length; i++) {
-					Atom at = allAtom[i];
 
-					// 이동 후 좌표
-					int nx = at.x;
-					int ny = at.y;
-					switch (at.dir) {
-					case 0: // 상
-						ny = at.y - 1;
-						break;
-					case 1: // 하
-						ny = at.y + 1;
-						break;
-					case 2: // 좌
-						nx = at.x - 1;
-						break;
-					case 3: // 우
-						ny = at.y + 1;
-						break;
-					}
+				Queue<Integer> bombAtomQ = new LinkedList<>(); // 소멸할 원자 리스트
+				boolean[] isFirst = new boolean[N + 1]; // 해당 좌표에서 처음 폭발하는 원자인지
+				for (int i = 1; i <= N; i++) {
+					Atom atom = null;
+					if (allAtom[i] != null)
+						atom = allAtom[i];
+					else
+						continue;
+					// 이동 후 좌표 : x가 열, y가 행
+					int ny = atom.y + deltas[atom.dir][0];
+					int nx = atom.x + deltas[atom.dir][1];
 
-					// 이동 장소에 에너지 배치(이미 에너지가 있는 곳이면 더해주기)
-					if (map[nx][ny] != 0) {
-						map[nx][ny] = at.n;
-						map[at.x][at.y] = 0; // 이동 전 자리 초기화
-						
-						// 이동한 자리로 업데이트
-						allAtom[i].x = nx;
-						allAtom[i].y = ny;
-						
-						BombAtom ba = new BombAtom(1, at.k);
-						allK[at.n] = ba;
+					if (ny >= map.length || nx >= map.length || ny < 0 || nx < 0) {
+						// 범위를 넘어가면 충돌 없이 소멸
+						allAtom[i] = null; // 원자 목록에서 없애기
+						continue;
 					} else {
-						
+						if (map[ny][nx] != 0) {
+							if (!isFirst[map[ny][nx]]) {
+								isFirst[map[ny][nx]] = true;
+								int existN = map[ny][nx]; // 기존에 있던 원자 번호
+								bombAtomQ.add(existN); // 기존에 있던 원자 번호를 소멸할 원자 목록에 넣기
+							}
+							map[ny][nx] = atom.n; // 새 좌표에 원자 넣기
+							bombAtomQ.add(atom.n); // 이번 턴의 원자 번호
+						}
 					}
+
+					// 이동 전 좌표 초기화
+					map[atom.y][atom.x] = 0;
+
+					// 원자 정보에 업데이트한 좌표 업데이트
+					allAtom[i].x = nx;
+					allAtom[i].y = ny;
+				} // ----- 원자 다 돌았음
+
+				// 소멸하는 원자들의 방출 에너지 합 구하기
+				while (bombAtomQ.size() > 0) {
+					int ba = bombAtomQ.poll();
+					res += allAtom[ba].k;
+					allAtom[ba] = null; // 원자 목록에서 없애기
 				}
-
-				for (int i = 1; i < allK.length; i++) {
-
-				}
-
 			}
+
+			System.out.println("#" + t + " " + res);
 		} // end of test case
 
 	}
