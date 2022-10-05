@@ -40,7 +40,6 @@ public class Solution_5658_보물상자비밀번호 {
 					char[] tmpArr = new char[N / 4]; // 한 변의 16진수 (ex. F18/3B1)
 					for (int j = 0; j < tmpArr.length; j++) {
 						tmpArr[j] = q.poll();
-//						System.out.print(tmpArr[j]); // [DEBUG]
 					}
 //					System.out.println(); // [DEBUG]
 
@@ -67,7 +66,6 @@ public class Solution_5658_보물상자비밀번호 {
 				for (int i = 0; i <= turn; i++) {
 					q.offer(q.poll());
 				}
-//				System.out.println(); // [DEBUG]
 			}
 
 			Collections.sort(pswdList, Collections.reverseOrder());
