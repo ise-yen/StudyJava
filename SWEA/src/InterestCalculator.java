@@ -1,9 +1,9 @@
 
 public class InterestCalculator {
 
-	static double rate = 0.11; // 금리
-	static int inputMoney = 300000; // 납입 금액
-	static int period = 6; // 납입 기간
+	static double rate = 0.4; // 금리
+	static int inputMoney = 100000; // 납입 금액
+	static int period = 26; // 납입 기간
 
 	public static void main(String[] args) {
 		double resultMoney = 0; // 최종 금액

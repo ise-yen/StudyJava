@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Solution_4014_활주로건설 {
@@ -34,8 +33,8 @@ public class Solution_4014_활주로건설 {
 
 			// < 활주로가 가능한 경우 >
 			// - 높이가 다 같을 때
-			// - 경사로 가능1 : 높이가 1씩 차이남 && 낮은 쪽 길이가 x 이상
-			// - 경사로 가능2 : 분지형인데 거리가 안될 때
+			// - 경사로 가능1 : 높이가 1씩 차이남 && 낮은 쪽 길이가 x(경사로 길이) 이상
+			// - 경사로 가능2 : 분지형인데 거리가 될 때
 
 //			System.out.println("가로");
 			// 1. 가로로 확인
@@ -43,6 +42,8 @@ public class Solution_4014_활주로건설 {
 				ArrayList<Integer> difPoint = new ArrayList<>(); // 높이가 달라지는 시작 위치들
 				boolean isImpossible = false;
 
+				
+				// ArrayList에 넣기
 				// 1-1. 높이차 확인
 				for (int j = 0; j < map.length - 1; j++) {
 					// a. 높이차가 없을 때 : 계속 진행
@@ -116,7 +117,6 @@ public class Solution_4014_활주로건설 {
 								}
 							}
 						}
-
 					}
 					if (isPossible)
 						res++;
