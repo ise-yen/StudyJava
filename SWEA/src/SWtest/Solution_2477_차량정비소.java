@@ -24,7 +24,7 @@ public class Solution_2477_차량정비소 {
 			B = Integer.parseInt(st.nextToken());
 		}
 		for (int k = 1; k <= K; k++) {
-
+			
 		}
 
 	}
