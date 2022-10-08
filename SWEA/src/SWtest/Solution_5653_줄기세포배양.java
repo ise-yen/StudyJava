@@ -3,6 +3,7 @@ package SWtest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Solution_5653_줄기세포배양 {
@@ -18,6 +19,17 @@ public class Solution_5653_줄기세포배양 {
 	static enum eStatus {
 		idle, newSepo, notActivate, activate, die
 	};
+
+	static class Sepo {
+		int i, j, k; // 좌표 행, 열, 배양시간
+
+		public Sepo(int i, int j, int k) {
+			super();
+			this.i = i;
+			this.j = j;
+			this.k = k;
+		}
+	}
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -38,10 +50,9 @@ public class Solution_5653_줄기세포배양 {
 			status = new eStatus[N + K * 2][M + K * 2];
 
 			for (int i = 0; i < status.length; i++) {
-				for (int j = 0; j < status[i].length; j++) {
-					status[i][j] = eStatus.idle;
-				}
+				Arrays.fill(status[i], eStatus.idle);
 			}
+
 			// <POINT!> 입력 크기만큼만 입력
 			for (int i = 0; i < N; i++) {
 				st = new StringTokenizer(br.readLine());
@@ -50,7 +61,7 @@ public class Solution_5653_줄기세포배양 {
 					int sepoI = i + map.length / 2 - 1;
 					int sepoJ = j + map[i].length / 2 - 1;
 
-					// <POINT!> 가운데부터 세포증식
+					// <POINT!> 가운데부터 세포 세팅
 					map[sepoI][sepoJ] = Integer.parseInt(st.nextToken());
 					timer[sepoI][sepoJ] = map[sepoI][sepoJ];
 					if (map[sepoI][sepoJ] != 0) {
@@ -60,14 +71,6 @@ public class Solution_5653_줄기세포배양 {
 				}
 			}
 			// ===== 입력 끝
-
-//			// [DEBUG] 맵
-//			for (int i = 0; i < map.length; i++) {
-//				for (int j = 0; j < map[i].length; j++) {
-//					System.out.print(map[i][j] + " ");
-//				}
-//				System.out.println();
-//			}
 
 			// [LOGIC]
 			// <POINT!> k시간 후 .. K시간 후까지

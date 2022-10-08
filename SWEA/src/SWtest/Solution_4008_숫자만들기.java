@@ -84,7 +84,7 @@ public class Solution_4008_숫자만들기 {
 
 //			// [DEBUG]
 //			System.out.print(nums[0]);
-			dfs(0, nums[0], 1);
+			perm(0, nums[0], 1);
 
 			// 결과 출력
 //			System.out.println(max + " - " + min);
@@ -93,7 +93,7 @@ public class Solution_4008_숫자만들기 {
 		} // ----- 테스트케이스 끝
 	}
 
-	static void dfs(int cnt, int cal, int index) {
+	static void perm(int cnt, int cal, int index) {
 		int tmp = cal;
 		if (cnt == opers.length) {
 			// [DEBUG]
@@ -125,7 +125,7 @@ public class Solution_4008_숫자만들기 {
 			}
 //			System.out.print(nums[index]);
 			isSelected[i] = true;
-			dfs(cnt + 1, cal, index + 1);
+			perm(cnt + 1, cal, index + 1);
 			isSelected[i] = false;
 			cal = tmp;
 		}
