@@ -38,39 +38,42 @@ public class Solution_2115_벌꿀채취 {
 				}
 			} // ===================== 입력 끝
 
-			boolean[][] isSelect = new boolean[N][N]; // 좌표 방문 체크
 			int totalMax = Integer.MIN_VALUE;
-			int manCnt = 0;
+			int manCnt = 2;
 			// 1. 가로로 연속 M개 고르기(좌표 방문 체크, 벌꿀양 개별로 저장)
 			for (int i = 0; i < map.length; i++) {
+				boolean[][] isSelectHoney = new boolean[N][N]; // 좌표 방문 체크
 				int cnt = 0;
 				List<Integer> selectHoney = new ArrayList<>(); // 선택한 벌꿀
 				for (int j = 0; j < map[i].length; j++) {
-					if (!isSelect[i][j]) {
-						selectHoney.add(map[i][j]);
-						isSelect[i][j] = true;
+					if (!isSelectHoney[i][j]) {
+						selectHoney.add(map[i][j]); // 고른 벌꿀 양을 넣어주기
+						isSelectHoney[i][j] = true;
 					}
 
 					// 2. M개 골랐으면 고른 좌표들의 벌꿀들 더하기
-					int max = 0;
+					int maxMoney = 0;
 					if (cnt == M) {
 						int sum = 0;
 						for (int m = 0; m < M; m++) {
 							sum += selectHoney.get(m);
-							// <= C : 수익 계산
-							if (sum <= C) {
-								max = CalMoney();
+						}
+						// <= C : 수익 계산
+						if (sum <= C) {
+							maxMoney = CalMoney(selectHoney);
+						}
+						// > C : 이 중에서 최대 수익 찾고 계산
+						else {
+							for (int k = M - 1; k >= 1; k--) {
+								maxSumInC = 0;
+								boolean[] isSelect = new boolean[M];
+								// 조합으로 찾기
+								perm(0, k, 0, 0, selectHoney, isSelect);
 							}
-							// > C : 이 중에서 최대 수익 찾고 계산
-							else {
-								for (int k = M - 1; k >= 1; k--) {
-									int maxSumInC = 0; // 그나마 최대인 거
-									perm(0, k, maxSumInC);
-								}
-							}
+							maxMoney = maxSumInC;
 						}
 						// 계산한 수익이 이전 전체최대수익보다 크면 이번 거를 전체최대수익으로 지정
-						Math.max(max, totalMax);
+						totalMax = Math.max(max, totalMax);
 					}
 				}
 			}
@@ -82,18 +85,33 @@ public class Solution_2115_벌꿀채취 {
 		}
 	}
 
-	static void perm(int cnt, int maxCnt, int sum) {
-		if (cnt == maxCnt)
-			return;
+	static int maxSumInC; // 그나마 최대 수익인 거
 
+	static void comb(int cnt, int maxCnt, int sum, int money, List<Integer> list, boolean[] isSelect) {
+		if (cnt == maxCnt) {
+			if (sum <= C) {
+				maxSumInC = Integer.max(maxSumInC, sum);
+			}
+			return;
+		}
 		// 고른 M개의 벌꿀들 중 최대 찾기
-		for (int i = 0; i < M; i++) {
+		for (int pos = 0; pos < M; pos++) {
+			if (isSelect[pos])
+				continue;
+			else {
+				isSelect[pos] = true;
+				perm(cnt + 1, maxCnt, sum + list.get(pos), list, isSelect);
+				isSelect[pos] = false;
+			}
 
 		}
 	}
-	
-	static int CalMoney() {
+
+	static int CalMoney(List<Integer> list) {
 		int money = 0;
+		for (int i = 0; i < list.size(); i++) {
+			money += Math.pow(list.get(i), 2);
+		}
 		return money;
 	}
 
