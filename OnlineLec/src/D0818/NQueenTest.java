@@ -14,6 +14,8 @@ public class NQueenTest {
 
 		setQueen(1);
 		System.out.println(ans);
+		
+		sc.close();
 	}
 
 	// 하나의 퀸만 가능한 모든 곳에 놓아보기

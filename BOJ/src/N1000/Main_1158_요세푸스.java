@@ -34,7 +34,7 @@ public class Main_1158_요세푸스 {
 			}
 			i++;
 		}
+		
+		sc.close();
 	}
-
-
 }

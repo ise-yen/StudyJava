@@ -34,5 +34,7 @@ public class Main_17413_단어뒤집기2 {
 		for(int i =0 ; i < ansL.size(); i++) {
 			System.out.print(ansL.get(i));
 		}
+		
+		sc.close();
 	}
 }

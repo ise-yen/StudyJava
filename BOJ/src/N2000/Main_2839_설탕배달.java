@@ -12,6 +12,8 @@ public class Main_2839_설탕배달 {
 		Scanner sc = new Scanner(System.in);
 		N = sc.nextInt();
 		System.out.println(Suger());
+		
+		sc.close();
 	}
 
 	static int Suger() {

@@ -19,6 +19,8 @@ public class NextPermutationTest { // nPn
 		do {
 			System.out.println(Arrays.toString(input)); // 순열 완성
 		}while(np(input));
+		
+		sc.close();
 	}
 	
 	public static boolean np(int[] numbers) { // numbers 배열의 상태를 근거로 다음 순열 생성, 다음 순열 존재하면 true, 아니면 false

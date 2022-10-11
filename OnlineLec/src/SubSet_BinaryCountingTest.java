@@ -14,6 +14,7 @@ public class SubSet_BinaryCountingTest {
 		}
 		gernerateSusbset();
 
+		sc.close();
 	}
 
 	private static void gernerateSusbset() {

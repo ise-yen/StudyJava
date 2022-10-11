@@ -21,6 +21,8 @@ public class Main_3040_백설공주와일곱난쟁이 {
 		}
 		// 총합 - 난쟁이 2명(조합)의 합 = 100인 거 찾기
 		DFS(0, 0);
+		
+		sc.close();
 	}
 
 	static void DFS(int index, int cnt) {

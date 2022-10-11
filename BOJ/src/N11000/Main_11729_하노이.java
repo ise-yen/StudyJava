@@ -23,5 +23,7 @@ public class Main_11729_하노이 {
 		// top을 end로 옮기기
 		move(n, 1, 2, 3);
 		System.out.println(cnt);
+		
+		sc.close();
 	}
 }

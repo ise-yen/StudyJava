@@ -27,6 +27,8 @@ public class PermutationBitMaskingTest {
 		
 		perm(0,0);
 		System.out.println("총 경우의 수 : "+totalCnt);
+		
+		sc.close();
 	}
 	
 	// cnt:직전까지 뽑은 순열에 포함된수의개수,   cnt+1번째 해당하는 순열에 포함될 수를 뽑기

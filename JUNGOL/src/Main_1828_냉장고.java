@@ -55,6 +55,7 @@ public class Main_1828_냉장고 {
 
 		System.out.println(cnt);
 
+		sc.close();
 	} // end of main
 
 }

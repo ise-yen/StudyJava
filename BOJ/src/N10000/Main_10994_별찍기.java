@@ -27,7 +27,7 @@ public class Main_10994_별찍기 {
 		
 		stars(n);
 		
-
+		sc.close();
 	}
 
 }
