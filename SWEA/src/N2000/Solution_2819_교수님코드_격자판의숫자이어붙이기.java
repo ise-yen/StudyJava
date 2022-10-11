@@ -3,9 +3,7 @@ package N2000;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.StringTokenizer;
 
 public class Solution_2819_교수님코드_격자판의숫자이어붙이기 {
 	static int[][] map = new int[4][4]; // 각각 0~9가 적혀있음

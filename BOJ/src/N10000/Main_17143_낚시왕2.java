@@ -126,13 +126,9 @@ public class Main_17143_낚시왕2 {
 			// 3. 상어가 이동한다.
 			for (int sIdx = 0; sIdx < sharkList.size(); sIdx++) {
 				if (sharkList.get(sIdx).s != 0) {
-					int r = sharkList.get(sIdx).r;
-					int c = sharkList.get(sIdx).c;
-					int spd = sharkList.get(sIdx).s;
 					eDir dir = sharkList.get(sIdx).d;
 					switch (dir) {
 					case up:
-						int tmp = map[r].length;
 						sharkList.get(sIdx).r--;
 						break;
 					case down:

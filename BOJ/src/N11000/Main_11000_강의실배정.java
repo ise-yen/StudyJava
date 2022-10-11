@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main_11000_강의실배정 {
