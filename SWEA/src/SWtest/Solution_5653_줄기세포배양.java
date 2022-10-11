@@ -45,9 +45,9 @@ public class Solution_5653_줄기세포배양 {
 			K = Integer.parseInt(st.nextToken());
 
 			// <POINT!> K 시간 후까지만 알면 되니까
-			map = new int[N + K * 2][M + K * 2];
-			timer = new int[N + K * 2][M + K * 2];
-			status = new eStatus[N + K * 2][M + K * 2];
+			map = new int[N + K][M + K];
+			timer = new int[N + K][M + K];
+			status = new eStatus[N + K][M + K];
 
 			for (int i = 0; i < status.length; i++) {
 				Arrays.fill(status[i], eStatus.idle);
@@ -58,8 +58,8 @@ public class Solution_5653_줄기세포배양 {
 				st = new StringTokenizer(br.readLine());
 				for (int j = 0; j < M; j++) {
 					// 현재 존재하는 세포 위치
-					int sepoI = i + map.length / 2 - 1;
-					int sepoJ = j + map[i].length / 2 - 1;
+					int sepoI = i + map.length / 2 - N / 2;
+					int sepoJ = j + map[i].length / 2 - M / 2;
 
 					// <POINT!> 가운데부터 세포 세팅
 					map[sepoI][sepoJ] = Integer.parseInt(st.nextToken());

@@ -63,7 +63,6 @@ public class Solution_5644_무선충전 {
 			}
 			///// <===== 입력 끝
 
-			
 			// 0. 주어진 시간 동안 : m초에
 			for (int m = 0; m <= timeM; m++) {
 				// 1. A, B 이동
