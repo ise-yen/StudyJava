@@ -12,7 +12,6 @@ public class Main_10994_별찍기 {
 
 	static void starsLeft() {
 		System.out.print("*");
-		for(int i =0; i< )
 	}
 	static void blank() {
 		System.out.print(" ");
