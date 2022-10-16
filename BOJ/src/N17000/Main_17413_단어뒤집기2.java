@@ -1,4 +1,4 @@
-package N10000;
+package N17000;
 import java.util.ArrayList;
 import java.util.Scanner;
 

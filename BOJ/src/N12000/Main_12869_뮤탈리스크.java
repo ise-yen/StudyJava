@@ -1,4 +1,4 @@
-package N10000;
+package N12000;
 
 import java.io.BufferedReader;
 import java.io.IOException;
