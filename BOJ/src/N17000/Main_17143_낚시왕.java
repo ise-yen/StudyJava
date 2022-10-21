@@ -28,6 +28,9 @@ public class Main_17143_낚시왕 {
 		empty, up, down, right, left;
 	}
 
+	static char[][] map;
+	static Shark[][] mapShark;
+
 	public static void main(String[] args) throws IOException {
 		int res = 0; // 정답
 
@@ -37,7 +40,7 @@ public class Main_17143_낚시왕 {
 		int C = Integer.parseInt(st.nextToken());
 		int M = Integer.parseInt(st.nextToken());
 
-		char[][] map = new char[R + 1][C + 1];
+		map = new char[R + 1][C + 1];
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[i].length; j++) {
 				map[i][j] = '0';
@@ -60,20 +63,15 @@ public class Main_17143_낚시왕 {
 			Shark shark = new Shark(num, r, c, s, eDir.values()[d], z);
 			sharkList.add(shark);
 			map[r][c] = num;
+			mapShark[r][c] = shark;
 		}
 
-//		// [DEBUG] map
-//		for (int i = 1; i < map.length; i++) {
-//			for (int j = 1; j < map[i].length; j++) {
-//				System.out.print(map[i][j] + " ");
-//			}
-//			System.out.println();
-//		}
+//		// [DEBUG] mapShark
 
-//		// [DEBUG] sharklist 확인
-//		for (int i = 0; i < sharkList.size(); i++) {
-//			System.out.println(sharkList.get(i).d + ", ");
-//		}
+		// [DEBUG] sharklist 확인
+		for (int i = 0; i < sharkList.size(); i++) {
+			System.out.println(sharkList.get(i).d + ", ");
+		}
 
 		int manPos = 0;
 
@@ -127,53 +125,66 @@ public class Main_17143_낚시왕 {
 				}
 			} // ========== 이동 종료
 
+			debugMap();
+			
 			// 4. 도착했을 때 상어가 있으면 가장 큰 놈만 살아남음
-			for (int si = 0; si < sharkList.size(); si++) {
-				for (int sj = 0; sj < sharkList.size(); sj++) {
-					if (si != sj) {
-						if (sharkList.get(si).z != -1 && sharkList.get(sj).z != -1) {
-							if (sharkList.get(si).r == sharkList.get(sj).r
-									&& sharkList.get(si).c == sharkList.get(sj).c) {
-								if (sharkList.get(si).z >= sharkList.get(sj).z) {
-									// (remove로 없애면 번호가 밀리고 시간초과 나므로 유령상태로 만들기)
-									sharkList.get(sj).s = sharkList.get(sj).z = -1; // 스피드랑 크기를 -1로 만듦
-								} else {
-									sharkList.get(si).s = sharkList.get(si).z = -1; // 스피드랑 크기를 -1로 만듦
-								}
-							}
-						}
-					}
-				}
-			} // ========== 데스매치 종료
+//			for (int si = 0; si < sharkList.size(); si++) {
+//				for (int sj = 0; sj < sharkList.size(); sj++) {
+//					if (si != sj) {
+//						if (sharkList.get(si).z != -1 && sharkList.get(sj).z != -1) {
+//							if (sharkList.get(si).r == sharkList.get(sj).r
+//									&& sharkList.get(si).c == sharkList.get(sj).c) {
+//								if (sharkList.get(si).z >= sharkList.get(sj).z) {
+//									// (remove로 없애면 번호가 밀리고 시간초과 나므로 유령상태로 만들기)
+//									sharkList.get(sj).s = sharkList.get(sj).z = -1; // 스피드랑 크기를 -1로 만듦
+//								} else {
+//									sharkList.get(si).s = sharkList.get(si).z = -1; // 스피드랑 크기를 -1로 만듦
+//								}
+//							}
+//						}
+//					}
+//				}
+//			} // ========== 데스매치 종료
 
-			// [DEBUG] 맵 재세팅
-			map = new char[R + 1][C + 1];
-			for (int i = 0; i < map.length; i++) {
-				for (int j = 0; j < map[i].length; j++) {
-					if (i == 0)
-						map[i][j] = '0';
-					else if (j == 0) {
-						map[i][j] = '0';
-					} else {
-						for (int si = 0; si < sharkList.size(); si++) {
-							if(sharkList.get(si).z != -1)
-								map[sharkList.get(si).r][sharkList.get(si).c] = sharkList.get(si).num;
-							else
-								map[i][j] = '0';
-						}
-					}
-				}
-			} // ========= 맵 세팅 종료
+//			// [DEBUG] 맵 재세팅
+//			map = new char[R + 1][C + 1];
+//			for (int i = 0; i < map.length; i++) {
+//				for (int j = 0; j < map[i].length; j++) {
+//					if (i == 0)
+//						map[i][j] = '0';
+//					else if (j == 0) {
+//						map[i][j] = '0';
+//					} else {
+//						for (int si = 0; si < sharkList.size(); si++) {
+//							if (sharkList.get(si).z != -1)
+//								map[sharkList.get(si).r][sharkList.get(si).c] = sharkList.get(si).num;
+//							else
+//								map[i][j] = '0';
+//						}
+//					}
+//				}
+//			} // ========= 맵 세팅 종료
 
-			// [DEBUG] map
-			for (int i = 1; i < map.length; i++) {
-				for (int j = 1; j < map[i].length; j++) {
-					System.out.print(map[i][j] + " ");
-				}
-				System.out.println();
-			}
 		} // ============== 시간 종료
 
 		System.out.println(res);
+	}
+
+	static void debugMap() {
+		for (int i = 1; i < map.length; i++) {
+			for (int j = 1; j < map[i].length; j++) {
+				System.out.print(map[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+	
+	static void debugMapShark() {
+		for (int i = 1; i < map.length; i++) {
+			for (int j = 1; j < map[i].length; j++) {
+				System.out.print(mapShark[i][j].d + " ");
+			}
+			System.out.println();
+		}
 	}
 }
