@@ -7,7 +7,7 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class Main_1260_DFS와BFS {
+public class Main_1260_DFS와BFS_ArrayList {
 
 	static int N, M, V;
 	static ArrayList<Point> arrP;

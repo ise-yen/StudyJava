@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class Main_17143_낚시왕 {
+public class Main_17143_낚시왕_enum {
 
 	static class Shark {
 		int r, c, s, z; // 상어위치, 속력, 이동 방향, 크기
@@ -30,6 +30,7 @@ public class Main_17143_낚시왕 {
 
 	static char[][] map;
 	static Shark[][] mapShark;
+	static ArrayList<Shark> sharkList;
 
 	public static void main(String[] args) throws IOException {
 		int res = 0; // 정답
@@ -47,7 +48,7 @@ public class Main_17143_낚시왕 {
 			}
 		}
 
-		ArrayList<Shark> sharkList = new ArrayList<Shark>();
+		sharkList = new ArrayList<Shark>();
 
 		// 상어들 정보 넣기
 		for (int m = 0; m < M; m++) {
@@ -63,15 +64,10 @@ public class Main_17143_낚시왕 {
 			Shark shark = new Shark(num, r, c, s, eDir.values()[d], z);
 			sharkList.add(shark);
 			map[r][c] = num;
-			mapShark[r][c] = shark;
 		}
-
-//		// [DEBUG] mapShark
 
 		// [DEBUG] sharklist 확인
-		for (int i = 0; i < sharkList.size(); i++) {
-			System.out.println(sharkList.get(i).d + ", ");
-		}
+		debugSharkList();
 
 		int manPos = 0;
 
@@ -126,7 +122,8 @@ public class Main_17143_낚시왕 {
 			} // ========== 이동 종료
 
 			debugMap();
-			
+
+			debugSharkList();
 			// 4. 도착했을 때 상어가 있으면 가장 큰 놈만 살아남음
 //			for (int si = 0; si < sharkList.size(); si++) {
 //				for (int sj = 0; sj < sharkList.size(); sj++) {
@@ -178,13 +175,10 @@ public class Main_17143_낚시왕 {
 			System.out.println();
 		}
 	}
-	
-	static void debugMapShark() {
-		for (int i = 1; i < map.length; i++) {
-			for (int j = 1; j < map[i].length; j++) {
-				System.out.print(mapShark[i][j].d + " ");
-			}
-			System.out.println();
+
+	static void debugSharkList() {
+		for (int i = 0; i < sharkList.size(); i++) {
+			System.out.println(sharkList.get(i).d + ", ");
 		}
 	}
 }
