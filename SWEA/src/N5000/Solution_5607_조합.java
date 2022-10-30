@@ -1,6 +1,5 @@
 package N5000;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Solution_5607_조합 {
@@ -15,6 +14,8 @@ public class Solution_5607_조합 {
 			R = sc.nextInt();
 			System.out.println("#" + t + " " + nCr(N, R, Q));
 		}
+		
+		sc.close();
 	}
 
 	static long power(long x, long y, long p) {
