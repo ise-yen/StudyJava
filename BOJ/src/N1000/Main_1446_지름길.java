@@ -1,9 +1,10 @@
+package N1000;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Main_1446_지름길 {
 	static class load{
 		
 	}
